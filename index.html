@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transcripción de Audio</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#007bff">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        <script>
+                if ('serviceWorker' in navigator) {
+                  window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('./service-worker.js')
+                      .then(reg => console.log("Service Worker registrado", reg.scope))
+                      .catch(err => console.error("Error al registrar el Service Worker", err));
+                  });
+                }
+              </script>
+              
+    <div class="container">
+        <h1>Transcripción de Audio</h1>
+        <input type="file" id="audioInput" accept="audio/*">
+        <audio id="audioPlayer" controls></audio>
+        <button id="transcribeBtn">Transcribir</button>
+        <div id="transcriptionResult"></div>
+        <button id="downloadPdfBtn" style="display: none;">Descargar PDF</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
